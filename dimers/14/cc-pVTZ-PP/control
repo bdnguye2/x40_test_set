@@ -1,0 +1,93 @@
+$title
+$symmetry c1
+$user-defined bonds    file=coord
+$coord    file=coord
+$optimize
+ internal   off
+ redundant  off
+ cartesian  on
+ global     off
+ basis      off
+$atoms
+c  1,7                                                                         \
+   basis =c cc-pVTZ                                                            \
+   cbas  =c cc-pVTZ                                                            \
+   jbas  =c cc-pVTZ
+br 2                                                                           \
+   basis =br cc-pVTZ-PP                                                        \
+   ecp   =br defpp-ecp                                                         \
+   cbas  =br cc-pVTZ-PP                                                        \
+   jbas  =br universal
+h  3-5,8-9                                                                     \
+   basis =h cc-pVTZ                                                            \
+   cbas  =h cc-pVTZ                                                            \
+   jbas  =h cc-pVTZ
+o  6                                                                           \
+   basis =o cc-pVTZ                                                            \
+   cbas  =o cc-pVTZ                                                            \
+   jbas  =o cc-pVTZ
+$basis    file=basis
+$ecp    file=basis
+$newecp
+$scfmo   file=mos
+$scfiterlimit       150
+$thize     0.10000000E-04
+$thime        5
+$scfdamp   start=1.000  step=0.050  min=0.100
+$scfdump
+$scfintunit
+ unit=30       size=0        file=twoint
+$scfdiis
+$maxcor  10000 MiB  per_core
+$scforbitalshift  automatic=.1
+$drvopt
+   cartesian  on
+   basis      off
+   global     off
+   hessian    on
+   dipole     on
+   nuclear polarizability
+$interconversion  off
+   qconv=1.d-7
+   maxiter=25
+$coordinateupdate
+   dqmax=0.3
+   interpolate  on
+   statistics    5
+$forceupdate
+   ahlrichs numgeo=0  mingeo=3 maxgeo=4 modus=<g|dq> dynamic fail=0.3
+   threig=0.005  reseig=0.005  thrbig=3.0  scale=1.00  damping=0.0
+$forceinit on
+   diag=default
+$energy    file=energy
+$grad    file=gradient
+$forceapprox    file=forceapprox
+$dft
+   functional pbe
+   gridsize   5
+$scfconv   7
+$ricore    10000
+$jbas    file=auxbasis
+$rirpa
+    npoints                    100
+    nohxx
+$denconv     0.10000000E-06
+$freeze
+ implicit core=   12 virt=    0
+$cbas    file=auxbasis
+$rundimensions
+   natoms=9
+   nbf(CAO)=225
+   nbf(AO)=199
+$last SCF energy change = -571.13183
+$charge from dscf
+         -0.000 (not to be modified here)
+$dipole from dscf
+  x    -0.14726372912617    y    -0.54830735668362    z    -0.85258770615741    a.u.
+   | dipole | =    2.6035837757  debye
+$closed shells
+ a       1-25                                   ( 2 )
+$last step     rirpa
+$orbital_max_rnorm 0.92660856725050E-05
+$last RIRPA energy change=  569.90939
+$end
