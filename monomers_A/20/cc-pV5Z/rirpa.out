@@ -1,0 +1,462 @@
+
+   OpenMP run-time library returned nthreads = 10
+
+ rirpa (c-14-12) : TURBOMOLE rev. V7.5.0 compiled 17 Jun 2020 at 09:15:30
+ Copyright (C) 2020 TURBOMOLE GmbH, Karlsruhe
+
+
+    2020-07-28 00:13:58.647 
+
+ 
+ 
+    *************************************************************************
+    *************************** PROGRAM RIRPA *******************************
+    ******                                                             ******
+    ******              H. Eshuis, J. E. Bates and F. Furche           ******
+    ******                                                             ******
+    ****** Nov 2011                                                    ******
+    ****** Copyright TURBOMOLE GmbH                                    ******
+    *************************************************************************
+    
+    
+                                References:                                  
+    
+                   RIRPA:                                                    
+                     H. Eshuis, J. Yarkony, and F. Furche                    
+                     Fast Computation of Molecular Random Phase              
+                     Approximation Correlation Energies Using Resolution     
+                     of the Identity and Imaginary Frequency Integration     
+                     J. Chem. Phys. 132: 234114 (2010)                       
+    
+                     H. Eshuis, J. E. Bates, and F. Furche                   
+                     Electron Correlation Methods Based on                   
+                     the Random Phase Approximation                          
+                     Theor. Chem. Acc.  131: 1084 (2012)                     
+    
+                     G. P. Chen, V. K. Voora, M. M. Agee,                    
+                     S. G. Balasubramani, and F. Furche                      
+                     Random-Phase Approximation Methods                      
+                     Annu. Rev. Phys. Chem. 68: 421 (2017)                   
+    
+                   TWO-COMPONENT RIRPA:                                      
+                     M. Kuehn                                                
+                     Correlation Energies from the                           
+                     Two-Component Random-Phase Approximation                
+                     J. Chem. Theory Comput. 10: 623 (2014)                  
+    
+                   RIRPA GRADIENTS:                                          
+                     A. M. Burow, J. E. Bates, F. Furche*, and H. Eshuis     
+                     Analytical First-Order Molecular Properties and Forces  
+                     within the Adiabatic Connection Random Phase            
+                     Approximation                                           
+                     J. Chem. Theory Comput. 10: 180 (2014)                  
+    
+                   RI-AXK/RI-ACSOSEX/RI-ACSOX:                               
+                     G. P. Chen, M. M. Agee, and F. Furche                   
+                     Performance and Scope of Perturbative Corrections to    
+                     Random-Phase Approximation Energies                     
+                     J. Chem. Theory Comput. 14: 5701 (2018)                 
+    
+                   GKS-RPA:                                                  
+                     V. K. Voora, S. G. Balasubramani, and F. Furche         
+                     Variational Generalized Kohn-Sham Approach Combining    
+                     the Random-Phase-Approximation and Green’s-Function     
+                     Methods                                                 
+                     Phys. Rev. A 99: 012518 (2019)                          
+    
+    
+    
+      ... OpenMP parallelization enabled, threads:   10
+
+   *-----------------------------------------------------------------------*
+   |                     program will use 10 thread(s)                     |
+   *-----------------------------------------------------------------------*
+
+ MAXIMUM CORE MEMORY WHICH CAN BE ALLOCATED DYNAMICALLY = 50000 MiB
+              ( or 6553600000 double words per process)
+
+ 
+                FOUND RI-J FLAG
+ 
+  HF exact exchange energy will be computed using RI-J.
+
+
+              +--------------------------------------------------+
+              | Atomic coordinate, charge and isotop information |
+              +--------------------------------------------------+
+
+                    atomic coordinates            atom    charge  isotop
+          2.30002309    0.00016318   -1.39328096    c      6.000     0
+          4.21916859    0.00033017    0.40912567    c      6.000     0
+          3.63811981    0.00024587    2.97726249    c      6.000     0
+          1.11968566    0.00033662    3.74535757    c      6.000     0
+         -0.81834438    0.00013275    1.96298476    c      6.000     0
+          2.73689415   -0.00003840   -3.38787335    h      1.000     0
+          6.16926311    0.00019357   -0.20229949    h      1.000     0
+          5.13456349   -0.00004375    4.36760885    h      1.000     0
+          0.65329249    0.00020694    5.73519283    h      1.000     0
+         -2.77506558   -0.00017614    2.54654764    h      1.000     0
+         -0.20991404   -0.00020548   -0.59868573    c      6.000     0
+         -2.82278970   -0.00330279   -3.03577474    br    35.000     0
+ 
+       center of nuclear mass  :   -0.57607738   -0.00160322   -0.94348487
+       center of nuclear charge:   -0.33402973   -0.00143996   -0.71810996
+              +-------------------------------------------------+
+              |        Rotational Constants Section             |
+              +-------------------------------------------------+
+                                   Center of Mass [a.u]:
+              -0.57607738068272        -0.00160322152711        -0.94348486790781
+                     Principal Moments of Inertia [a.u.]
+             316.75093906274969      1826.57982662980544      2143.33064843543980
+                       Rotational constants A,B,C [a.u.]
+               0.00157852728544         0.00027373564118         0.00023328178523
+                     Rotational constants A,B,C [cm**-1]
+               0.19005369541943         0.03295759956329         0.02808698067207
+                        Rotational constants A,B,C [MHz]
+            5697.66645017754126       988.04397828588753       842.02649734769625
+
+   * BASIS SET information:
+
+              +--------------------------------------------------+
+              |               basis set information              |
+              +--------------------------------------------------+
+
+              we will work with the 1s 3p 5d 7f 9g ... basis set
+              ...i.e. with spherical basis functions...
+
+   type   atoms  prim   cont   basis
+   ---------------------------------------------------------------------------
+    c        6    118     91   cc-pV5Z   [6s5p4d3f2g1h|24s8p4d3f2g1h]
+    h        5     58     55   cc-pV5Z   [5s4p3d2f1g|8s4p3d2f1g]
+    br       1    336    104   cc-pV5Z   [8s7p5d3f2g1h|92s43p13d3f2g1h]
+   ---------------------------------------------------------------------------
+   total:   12   1334    925
+   ---------------------------------------------------------------------------
+
+   total number of primitive shells          :  214
+   total number of contracted shells         :  227
+   total number of cartesian basis functions : 1246
+   total number of SCF-basis functions       :  925
+
+
+   * AUXILIARY BASIS SET information:
+
+              +--------------------------------------------------+
+              |               basis set information              |
+              +--------------------------------------------------+
+
+              we will work with the 1s 3p 5d 7f 9g ... basis set
+              ...i.e. with spherical basis functions...
+
+   type   atoms  prim   cont   basis
+   ---------------------------------------------------------------------------
+    c        6    193    193   cc-pV5Z   [10s8p7d6f4g3h1i|10s8p7d6f4g3h1i]
+    h        5     91     91   cc-pV5Z   [6s5p4d3f2g1h|6s5p4d3f2g1h]
+    br       1    365    365   cc-pV5Z   [15s13p12d10f8g5h3i1k|15s13p12d10f8g5h3i1k]
+   ---------------------------------------------------------------------------
+   total:   12   1978   1978
+   ---------------------------------------------------------------------------
+
+   total number of primitive shells          :  127
+   total number of contracted shells         :  406
+   total number of cartesian basis functions : 2923
+   total number of SCF-basis functions       : 1978
+
+
+   * RIJ AUXILIARY BASIS SET information:
+
+              +--------------------------------------------------+
+              |               basis set information              |
+              +--------------------------------------------------+
+
+              we will work with the 1s 3p 5d 7f 9g ... basis set
+              ...i.e. with spherical basis functions...
+
+   type   atoms  prim   cont   basis
+   ---------------------------------------------------------------------------
+    c        6     70     49   cc-pV5Z   [6s4p3d1f1g|12s5p4d2f1g]
+    h        5     16     11   cc-pV5Z   [3s1p1d|5s2p1d]
+    br       1     89     58   universal   [8s4p3d2f1g|19s5p5d3f1g]
+   ---------------------------------------------------------------------------
+   total:   12    589    407
+   ---------------------------------------------------------------------------
+
+   total number of primitive shells          :   65
+   total number of contracted shells         :  133
+   total number of cartesian basis functions :  499
+   total number of SCF-basis functions       :  407
+
+
+ reading orbital data $scfmo  from file mos
+ orbital characterization : scfconv=7
+
+ integral neglect threshold       :  0.27E+02
+
+ scfconv                     7
+
+ there are 1 real representations :   a   
+
+ maximum number of shells which are related by symmetry :  1
+
+ entered riccmos at 2020-07-28 00:13:59.117
+VM size:       826 MB
+  MOs are in ASCII format !
+
+
+ reading orbital data $scfmo  from file mos
+ orbital characterization : scfconv=7
+after riccmoinp VM size:       752 MB
+registered memory usage:         7 MB
+ time elapsed for calculating density matrices :   0.645 sec
+
+
+
+              +--------------------------------------------+
+              | list of orbitals that will be kept frozen: |
+              +--------------------------------------------+
+              |   irrep   index      energy     occ/vir    |
+              +--------------------------------------------+
+              |   a         1     -480.9896     occupied   |
+              |   a         2      -61.7897     occupied   |
+              |   a         3      -55.7026     occupied   |
+              |   a         4      -55.6999     occupied   |
+              |   a         5      -55.6999     occupied   |
+              |   a         6       -9.9490     occupied   |
+              |   a         7       -9.9043     occupied   |
+              |   a         8       -9.9042     occupied   |
+              |   a         9       -9.9030     occupied   |
+              |   a        10       -9.9029     occupied   |
+              |   a        11       -9.8994     occupied   |
+              |   a       ...        ...        occupied   |
+              |   a        20       -2.4740     occupied   |
+              +--------------------------------------------+
+
+
+
+   Molecular Orbital Statistic:
+   ============================
+
+   -----------------------------
+   orbitals in total:
+   -----------------------------
+    frozen occupied :     20
+    active occupied :     18
+    active virtual  :    887
+    frozen virtual  :      0
+    all together    :    925
+   -----------------------------
+
+
+     time in riccmoinp     cpu:  0.39 sec    wall:  0.39 sec    ratio:  1.0
+     time in scfdens       cpu:  0.65 sec    wall:  0.07 sec    ratio:  9.1
+     time in mkiao         cpu:  0.00 sec    wall:  0.00 sec    ratio:  0.0
+     time in mkiho         cpu:  0.00 sec    wall:  0.00 sec    ratio:  0.0
+     time in sao2ao        cpu:  0.15 sec    wall:  0.01 sec    ratio: 10.0
+     time in ricclmos      cpu:  0.00 sec    wall:  0.00 sec    ratio:  0.0
+     time in riccmos       cpu:  1.79 sec    wall:  0.54 sec    ratio:  3.3
+ leave riccmos at 2020-07-28 00:13:59.655
+
+     total memory allocated for calculation of (Q|P)**(-1/2) : 45 MiB
+
+
+     calculation of (P|Q) ...
+     time in lp2sym        cpu:  0.64 sec    wall:  0.06 sec    ratio: 10.0
+
+
+     calculation of the Cholesky decomposition of (P|Q)**(-1) ...
+     time in invmetri      cpu:  2.39 sec    wall:  0.24 sec    ratio:  9.8
+
+   threshold for RMS(d[D]) in SCF was     :  0.10E-06
+   integral neglect threshold             :  0.11E-11
+   derivative integral neglect threshold  :  0.10E-06
+
+
+ setting up bound for integral derivative estimation
+
+ increment for numerical differentiation : 0.00050000
+ 
+ Occupied orbital block size for RIRPA:                    18
+ 
+ Number of passes for spin                     1 is                     1
+ 
+ Number of eigenvalues < 6e-3:                      0
+ 
+ 
+            -----------------------------
+            Complex frequency integration
+            -----------------------------
+ 
+ Number of Clenshaw-Curtis nodes:                    100
+ Optimized scaling parameter    :    1.99405793284455     
+ Sensitivity measure            :  -1.883510014621947E-011
+ 
+ Done with rirpa frequency point #                     1
+ Done with rirpa frequency point #                     2
+ Done with rirpa frequency point #                     3
+ Done with rirpa frequency point #                     4
+ Done with rirpa frequency point #                     5
+ Done with rirpa frequency point #                     6
+ Done with rirpa frequency point #                     7
+ Done with rirpa frequency point #                     8
+ Done with rirpa frequency point #                     9
+ Done with rirpa frequency point #                    10
+ Done with rirpa frequency point #                    11
+ Done with rirpa frequency point #                    12
+ Done with rirpa frequency point #                    13
+ Done with rirpa frequency point #                    14
+ Done with rirpa frequency point #                    15
+ Done with rirpa frequency point #                    16
+ Done with rirpa frequency point #                    17
+ Done with rirpa frequency point #                    18
+ Done with rirpa frequency point #                    19
+ Done with rirpa frequency point #                    20
+ Done with rirpa frequency point #                    21
+ Done with rirpa frequency point #                    22
+ Done with rirpa frequency point #                    23
+ Done with rirpa frequency point #                    24
+ Done with rirpa frequency point #                    25
+ Done with rirpa frequency point #                    26
+ Done with rirpa frequency point #                    27
+ Done with rirpa frequency point #                    28
+ Done with rirpa frequency point #                    29
+ Done with rirpa frequency point #                    30
+ Done with rirpa frequency point #                    31
+ Done with rirpa frequency point #                    32
+ Done with rirpa frequency point #                    33
+ Done with rirpa frequency point #                    34
+ Done with rirpa frequency point #                    35
+ Done with rirpa frequency point #                    36
+ Done with rirpa frequency point #                    37
+ Done with rirpa frequency point #                    38
+ Done with rirpa frequency point #                    39
+ Done with rirpa frequency point #                    40
+ Done with rirpa frequency point #                    41
+ Done with rirpa frequency point #                    42
+ Done with rirpa frequency point #                    43
+ Done with rirpa frequency point #                    44
+ Done with rirpa frequency point #                    45
+ Done with rirpa frequency point #                    46
+ Done with rirpa frequency point #                    47
+ Done with rirpa frequency point #                    48
+ Done with rirpa frequency point #                    49
+ Done with rirpa frequency point #                    50
+ Done with rirpa frequency point #                    51
+ Done with rirpa frequency point #                    52
+ Done with rirpa frequency point #                    53
+ Done with rirpa frequency point #                    54
+ Done with rirpa frequency point #                    55
+ Done with rirpa frequency point #                    56
+ Done with rirpa frequency point #                    57
+ Done with rirpa frequency point #                    58
+ Done with rirpa frequency point #                    59
+ Done with rirpa frequency point #                    60
+ Done with rirpa frequency point #                    61
+ Done with rirpa frequency point #                    62
+ Done with rirpa frequency point #                    63
+ Done with rirpa frequency point #                    64
+ Done with rirpa frequency point #                    65
+ Done with rirpa frequency point #                    66
+ Done with rirpa frequency point #                    67
+ Done with rirpa frequency point #                    68
+ Done with rirpa frequency point #                    69
+ Done with rirpa frequency point #                    70
+ Done with rirpa frequency point #                    71
+ Done with rirpa frequency point #                    72
+ Done with rirpa frequency point #                    73
+ Done with rirpa frequency point #                    74
+ Done with rirpa frequency point #                    75
+ Done with rirpa frequency point #                    76
+ Done with rirpa frequency point #                    77
+ Done with rirpa frequency point #                    78
+ Done with rirpa frequency point #                    79
+ Done with rirpa frequency point #                    80
+ Done with rirpa frequency point #                    81
+ Done with rirpa frequency point #                    82
+ Done with rirpa frequency point #                    83
+ Done with rirpa frequency point #                    84
+ Done with rirpa frequency point #                    85
+ Done with rirpa frequency point #                    86
+ Done with rirpa frequency point #                    87
+ Done with rirpa frequency point #                    88
+ Done with rirpa frequency point #                    89
+ Done with rirpa frequency point #                    90
+ Done with rirpa frequency point #                    91
+ Done with rirpa frequency point #                    92
+ Done with rirpa frequency point #                    93
+ Done with rirpa frequency point #                    94
+ Done with rirpa frequency point #                    95
+ Done with rirpa frequency point #                    96
+ Done with rirpa frequency point #                    97
+ Done with rirpa frequency point #                    98
+ Done with rirpa frequency point #                    99
+ Done with rirpa frequency point #                   100
+ 
+
+
+ RI-RPA correlation energy: -0.1958341238804017E+01
+ Allocatable memory for RI due to $ricore (MB):                  5000
+
+ there are 1 real representations :   a   
+
+ maximum number of shells which are related by symmetry :  1
+
+  
+           ------------------------
+               RI-J - INFORMATION
+           ------------------------
+ Contributions to RI integral batches: 
+  neglected integral batches:                  2856
+  direct contribution:                            0
+  memory contribution:                 23022
+
+          ------------------------
+          nuclear repulsion energy  :   431.739071068    
+          ------------------------
+
+
+         -----------------
+         -S,T+V- integrals
+         -----------------
+
+ 1e-integrals will be neglected if expon. factor < 0.114038E-11
+
+                  --------------------------------------------------- 
+                 |  HXX+RIRPA total energy     =  -2804.55947752142  |
+                  ---------------------------------------------------- 
+                 :  RIRPA correlation energy   =     -1.95834123880  :
+                 :  HXX total energy           =  -2802.60113628262  :
+                 :  Hartree energy             =   1639.99007762073  :
+                 :  Exact Exchange energy      =   -122.40350431929  :
+                  .................................................... 
+
+
+    ------------------------------------------------------------------------
+    Rirpa profiling                cpu                    wall         ratio
+    ------------------------------------------------------------------------
+    module                         sec     %               sec     %
+    ------------------------------------------------------------------------
+    RIRPA                      2922.3  100.00          310.0  100.00   9.4
+    STARTUP                       2.1    0.07            0.5    0.15   4.6
+    riccmos                       1.8    0.06            0.5    0.17   3.3
+    riccaux                       3.1    0.11            0.3    0.10   9.8
+    riccbound                    20.2    0.69           18.5    5.97   1.1
+    ccmkbaoi                     46.5    1.59            4.7    1.51  10.0
+    ecrpa                       362.1   12.39           36.4   11.73  10.0
+    qbuild                      349.4   11.96           35.0   11.29  10.0
+    rparenrm                      9.2    0.31            0.9    0.30   9.9
+    ehxx                       2485.0   85.03          249.0   80.32  10.0
+    ------------------------------------------------------------------------
+    sum                        6204.3  212.30          656.0  211.62   9.5
+    ------------------------------------------------------------------------
+
+
+    ------------------------------------------------------------------------
+         total  cpu-time : 48 minutes and 42 seconds
+         total wall-time :  5 minutes and 10 seconds
+    ------------------------------------------------------------------------
+
+   ****  rirpa : all done  ****
+
+
+    2020-07-28 00:19:08.636 
+
